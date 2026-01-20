@@ -1,4 +1,4 @@
-"use client"
+
 import { motion } from 'framer-motion'
 import { use, useEffect, useState } from 'react';
 import { FiPhone, FiMail, FiMapPin, FiSend } from 'react-icons/fi'
