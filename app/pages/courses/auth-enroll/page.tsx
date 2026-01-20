@@ -18,14 +18,16 @@ const router = useRouter()
   
 
 
- useEffect(() => {
-    if (!router.isReady) return;
+useEffect(() => {
+  if (!router.isReady) return;
 
-    const { courseTitle, coursePrice } = router.query;
+  const titleParam = router.query.title;
+  const priceParam = router.query.price;
 
-    setTitle(title ?? "");
-    setPrice(price ?? "");
-  }, [router.isReady, router.query]);
+  setTitle(typeof titleParam === "string" ? titleParam : "");
+  setPrice(typeof priceParam === "string" ? priceParam : "");
+}, [router.isReady, router.query]);
+
 
   const enrollCourses = async () => {
     const res = await fetch("/api/enroll", {
