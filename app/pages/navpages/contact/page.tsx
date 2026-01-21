@@ -1,9 +1,23 @@
-'use client'
+"use client"
 import React from 'react'
+import Navbar from '../../navbar'
 
-export default function Footer() {
-  return (
-    <footer className="bg-slate-800 text-white mt-0">
+function page() {
+    return (
+       <footer className="bg-[#0f172a] text-white mt-0 ">
+        <Navbar/>
+
+        <div>
+            <h1 className='font-extrabold text-2xl text-blue-200 items-center justify-center mt-20 text-center'>
+                Institute of Computerised Account and Taxation
+            </h1>
+            <i className='text-center flex flex-col m-8 text-amber-600'>Office :New Colony,Near Gurudwara, Deoria(U.P)</i>
+            
+        </div>
+        <i className='text-center text-xl justify-center items-center ml-10'>
+                For admission inquiries and course details related to the CCC (Course on Computer Concepts) by NIELIT, feel free to contact us. Our support team is available to guide you regarding eligibility,
+                 syllabus, exam schedule, and certification process. You can reach us via phone or email for quick assistance. We also provide help with online registration and exam form filling. Visit our institute during working hours for in-person counseling. Your career in basic computer education starts here.
+            </i>
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
 
@@ -43,7 +57,7 @@ export default function Footer() {
             <p className="text-gray-300 text-sm">Email:icatdeoria@gmail.com
 
             </p>
-            <p className="text-gray-300 text-sm">Phone:9828573904 </p>
+            <p className="text-gray-300 text-sm">Phone: 9838573904 ,7398792189</p>
           </div>
           <div className=" space-x-3 mt-3">
             <a href="#" className="text-gray-300 hover:text-white">Facebook</a>
@@ -54,9 +68,12 @@ export default function Footer() {
       </div>
 
 
-      <div className="bg-slate-800 text-center text-gray-400 text-sm py-4">
+      <div className="bg-gray-900 text-center text-gray-400 text-sm py-4">
         © 2026 NIELET Courses. All Rights Reserved.
       </div>
     </footer>
-  )
+
+    )
 }
+
+export default page

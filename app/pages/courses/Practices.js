@@ -39,13 +39,13 @@ function Practices() {
     ]
 
     return (
-        <section className="bg-slate-900/40 backdrop-blur-2xl border border-slate-700/40 py-12 px-6">
-            <h2 className="text-3xl font-bold text-center mb-10 text-black">
+        <section className="bg-slate-900 backdrop-blur-2xl border border-slate-700/40 py-12 px-6">
+            <h2 className="text-3xl font-bold text-center mb-10 text-amber-700">
                 Practices Test
             </h2>
-            <p className="text-center text-gray-600 mb-8 ">
+            <p className="text-center text-amber-600 mb-8 ">
                 Regularly attempted chapter-wise practice tests and MCQs to strengthen conceptual understanding.
-                Solved model papers and mock tests based on the latest NIELIT CCC exam <strong className='text-black'>pattern,Improved accuracy, speed, and exam confidence </strong>.
+                Solved model papers and mock tests based on the latest NIELIT CCC exam <strong className='text-sky-600'>pattern,Improved accuracy, speed, and exam confidence </strong>.
                 through continuous test practice.
             </p>
 

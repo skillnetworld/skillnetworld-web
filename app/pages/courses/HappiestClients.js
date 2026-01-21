@@ -42,7 +42,7 @@ useEffect(() => {
 
 
     return (
-     <div className="mt-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 rounded-xl backdrop-blur-2xl border border-slate-700/40">
+     <div className="mt-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-amber-700 rounded-xl backdrop-blur-2xl border border-slate-700/40">
     <h3 className="text-2xl font-bold text-center mb-8">
         What Our Students Say
     </h3>

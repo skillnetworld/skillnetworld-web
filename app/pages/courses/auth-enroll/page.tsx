@@ -2,6 +2,7 @@
 import {  useEffect, useState } from 'react';
 import Navbar from '../../navbar';
 import { FiSend } from 'react-icons/fi';
+import { useSearchParams } from 'next/navigation';
 
 
 
@@ -9,7 +10,7 @@ import { FiSend } from 'react-icons/fi';
 
 export default function page() {
 
-    const [mount, setMount] = useState(false)
+   const searchParams = useSearchParams()
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [Name, setName] = useState("");
@@ -19,20 +20,12 @@ export default function page() {
 
 
 
-    useEffect(() => {
-        setMount(true)
-    }, [])
+ 
 
-    useEffect(() => {
-        if (!mount) return;
-
-        const params = new URLSearchParams(window.location.search);
-
-        setTitle(params.get("title") ?? "");
-        setPrice(params.get("price") ?? "");
-    }, [mount]);
-
-    if (!mount) return null;
+   useEffect(() => {
+    setTitle(searchParams.get("courseTitle") || "");
+    setPrice(searchParams.get("coursePrice") || "");
+  }, [searchParams]);
 
 
     const enrollCourses = async () => {
@@ -41,7 +34,7 @@ export default function page() {
             headers: {
           "Content-Type": "application/json",
         },
-            body: JSON.stringify({ email, Name, phone, title }),
+            body: JSON.stringify({ email, Name, phone, title,price }),
         });
 
         if (res.ok) {
@@ -51,16 +44,16 @@ export default function page() {
         }
     };
     return (
-        <>
+        <div className='bg-[#020617] '>
             <Navbar />
-            <div className=' mx-auto justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 rounded-xl items-center border-2 border-black p-5
-    max-w-xl mt-6 mb-10 rounded-lg
+            <div className=' mx-auto justify-center bg-gradient-to-br bg-slate-400 hover:bg-slate-200 mt-5 rounded-xl items-center border-2 border-black p-5
+    max-w-xl mt-0 mb-10 rounded-lg
     grid grid-cols-1 gap-6'>
 
                 <h1 className='text-3xl font-extrabold text-center mt-6'>Students Enrollment Page</h1>
                 <p className='text-center mt-3'>This is the authentication enrollment page.</p>
 
-                <h2 className="text-2xl font-bold text-black mx-auto mb-6">
+                <h2 className="text-2xl font-bold text-blue-700 mx-auto mb-6">
                     Send Us a Message
                 </h2>
 
@@ -112,7 +105,8 @@ export default function page() {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-
+                        placeholder={title}
+                        
                         readOnly
                         className="w-full border-2 border-black rounded-lg px-4 py-2 
               focus:outline-none focus:ring-2 focus:ring-black"
@@ -127,6 +121,8 @@ export default function page() {
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                         readOnly
+                        placeholder={price}
+                        
                         className="w-full border-2 border-black rounded-lg px-4 py-2 
               focus:outline-none focus:ring-2 focus:ring-black"
                     />
@@ -159,7 +155,8 @@ export default function page() {
 
 
             </div>
-        </>
+            </div>
+        
     )
 }
 

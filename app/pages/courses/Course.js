@@ -66,11 +66,11 @@ function Courses(title,price) {
 
   return (
     <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-200 rounded-xl py-12 px-6">
-      <h2 className="text-3xl font-bold text-center mb-10 text-black">
+      <h2 className="text-3xl font-bold text-center mb-10 text-amber-700">
         Our Courses
       </h2>
-      <p className="text-center text-gray-600 mb-8">
-        Explore our wide range of courses designed to enhance your <strong className="font-bold text-black">skills and knowledge</strong>.Completed <strong className='font-bold text-black'>Course on Computer Concepts(CCC)</strong> (Course on Computer Concepts) covering the full syllabus from MR1 to MR5.
+      <p className="text-center text-amber-500 mb-8">
+        Explore our wide range of courses designed to enhance your <strong className="font-bold text-blue-500">skills and knowledge</strong>.Completed <strong className='font-bold text-blue-500'>Course on Computer Concepts(CCC)</strong> (Course on Computer Concepts) covering the full syllabus from MR1 to MR5.
         Studied all modules through chapter-wise theory, assignments, and practical exercises.
         Practiced chapter-wise MCQs, model papers, and mock tests for exam readiness.
         Gained hands-on practical skills in computer fundamentals, MS Office, internet, and digital services.

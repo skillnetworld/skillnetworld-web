@@ -34,7 +34,7 @@ export default function ContactPage() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-500">
             Contact Us
           </h1>
           <p className="mt-4 text-gray-200 max-w-2xl mx-auto">
@@ -54,36 +54,36 @@ export default function ContactPage() {
             transition={{ delay: 0.2 }}
             className="bg-slate-900/40 backdrop-blur-2xl border border-slate-950/40 border-black rounded-2xl p-8 text-white space-y-6"
           >
-            <h2 className="text-2xl text-black font-bold mb-4">Get in Touch</h2>
+            <h2 className="text-2xl text-blue-200 font-bold mb-4">Get in Touch</h2>
 
             <div className="flex items-start gap-4">
-              <FiPhone className="text-black text-2xl mt-1" />
+              <FiPhone className="text-blue-200 text-2xl mt-1" />
               <div>
-                <p className="font-semibold text-black">Phone</p>
-                <p className="text-black">+91-8404827541</p>
+                <p className="font-semibold text-blue-200">Phone</p>
+                <p className="text-blue-200">+91-8404827541</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <FiMail className="text-black text-2xl mt-1" />
+              <FiMail className="text-blue-300 text-2xl mt-1" />
               <div>
-                <p className="font-semibold text-black">Email</p>
-                <p className="text-black">aksir@nielitportal.com</p>
+                <p className="font-semibold text-blue-300">Email</p>
+                <p className="text-blue-300">aksir@nielitportal.com</p>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
-              <FiMapPin className="text-black text-2xl mt-1" />
+              <FiMapPin className="text-blue-300 text-2xl mt-1" />
               <div>
-                <p className="font-semibold text-black">Address</p>
-                <p className="text-black">
+                <p className="font-semibold text-blue-300">Address</p>
+                <p className="text-blue-300">
                   NIELIT Training Center<br />
                   India
                 </p>
               </div>
             </div>
 
-            <div className="pt-4 text-black text-sm">
+            <div className="pt-4 text-blue-300 text-sm">
               Available: Mon - Sat (9:00 AM - 8:00 PM)
             </div>
           </motion.div>
@@ -97,50 +97,50 @@ export default function ContactPage() {
   transition={{ delay: 0.4 }}
   className="bg-slate-900/40 backdrop-blur-2xl border border-slate-950/40 border-black rounded-2xl p-8 shadow-xl space-y-6"
 >
-  <h2 className="text-2xl font-extrabold text-black mb-4">
+  <h2 className="text-2xl font-extrabold text-blue-300 mb-4">
     Send Us a Message
   </h2>
 
   <div>
-    <label className="block text-sm font-bold text-black mb-1">
+    <label className="block text-sm font-bold text-blue-300 mb-1">
       Full Name
     </label>
     <input
       type="text"
       placeholder="Your Name"
-      className="w-full border-2 border-black rounded-lg px-4 py-2 
-      focus:outline-none focus:ring-2 focus:ring-black"
+      className="w-full border-1 border-blue-200 text-red-300 rounded-lg px-4 py-2 
+      focus:outline-none "
     />
   </div>
 
   <div>
-    <label className="block text-sm font-bold text-black mb-1">
+    <label className="block text-sm font-bold text-blue-300 mb-1">
       Email Address
     </label>
     <input
       type="email"
       placeholder="E-mail"
-      className="w-full border-2 border-black rounded-lg px-4 py-2 
+      className="w-full border-1 border-blue-200 text-red-200 rounded-lg px-4 py-2 
       focus:outline-none focus:ring-2 focus:ring-black"
     />
   </div>
 
   <div>
-    <label className="block text-sm font-bold text-black mb-1">
+    <label className="block text-sm font-bold text-blue-300 mb-1">
       Message
     </label>
     <textarea
       rows="4"
       placeholder="Write your message..."
-      className="w-full border-2 border-black rounded-lg px-4 py-2 
-      focus:outline-none focus:ring-2 focus:ring-black resize-none"
+      className="w-full border-2 border-blue-200 text-red-300 rounded-lg px-4 py-2 
+      focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"
     />
   </div>
 
   <button
     type="submit"
     className="w-full flex items-center justify-center gap-2 
-    bg-[radial-gradient(circle_at_20%_20%,_#6366f140,_transparent_40%),radial-gradient(circle_at_80%_80%,_#22d3ee30,_transparent_40%)] bg-[#020617] text-white font-semibold py-3 rounded-lg 
+    bg-[radial-gradient(circle_at_20%_20%,_#6366f140,_transparent_40%),radial-gradient(circle_at_80%_80%,_#22d3ee30,_transparent_40%)] bg-[#020617] text-blue-200 font-semibold py-3 rounded-lg 
     hover:bg-black hover:scale-[1.02] transition"
   >
     <FiSend /> Send Message

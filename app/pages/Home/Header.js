@@ -14,7 +14,7 @@ function Header() {
       title: 'Welcome to NIELIT CCC Course Portal',
       desc: 'Your gateway to quality education and exam-focused preparation',
       img0: 'https://icit.in/ccc-course/images/ccc-course-600x200.jpg',
-      img2: 'https://media.canva.com/v2/image-resize/format:JPG/height:578/quality:92/uri:ifs%3A%2F%2FM%2F26fe7663-af8f-4b9d-87f3-178250fc3cdb/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAKMvVDFCPU3iG7Eclqq0WreCDs4LD3--OtENozKpFtNn&exp=1768820614&osig=AAAAAAAAAAAAAAAAAAAAAAsBSbPBeLApkGsqBUX8U9H7kpjKO8-vMePP-h9i2ExJ&signer=media-rpc&x-canva-quality=screen',
+      img2: 'https://media.canva.com/v2/image-resize/format:JPG/height:578/quality:92/uri:ifs%3A%2F%2FM%2F26fe7663-af8f-4b9d-87f3-178250fc3cdb/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAFkf-pBTg81M88DA7thkUA6BOl2ginU4NLDciIcEEBre&exp=1769011414&osig=AAAAAAAAAAAAAAAAAAAAAKTvQc3TZv3V_WJjKGvswAAnL2pIH69oCqayBNblxqvF&signer=media-rpc&x-canva-quality=screen',
 
       sections: [
         {
@@ -72,10 +72,10 @@ function Header() {
 
   return (
     <div
-      className="relative w-full bg-center bg-cover"
+      className="relative w-full bg-neutral-950 bg-center bg-cover"
       style={{
         backgroundImage:
-          "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMS0M7mCfzIXjQyyUQLAE8a0jxTHS1Qrz2yg&s')",
+          "url('https://th.bing.com/th/id/OIP.ILVfvVAkx_wFnWwXmW8RUAHaEK?w=290&h=180&c=7&r=0&o=7&pid=1.7&rm=3')",
       }}
     >
       <div className="absolute inset-0 bg-black/50" />
@@ -107,7 +107,7 @@ function Header() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="text-3xl md:text-4xl font-bold text-center text-white"
+          className="text-3xl md:text-4xl font-bold text-center text-blue-200"
         >
           {slides[slide].title}
         </motion.h1>
@@ -117,13 +117,13 @@ function Header() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
-          className="mt-4 text-center text-gray-200 max-w-2xl mx-auto"
+          className="mt-4 text-center text-amber-600 max-w-2xl mx-auto"
         >
           {slides[slide].desc}
         </motion.p>
 
      
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-10 mt-14 items-center">
           <motion.img
             src={slides[slide].img0}
             variants={fadeLeft}
@@ -149,12 +149,12 @@ function Header() {
               initial="hidden"
               animate="visible"
               transition={{ delay: i * 0.15 }}
-              className="bg-white/90 rounded-xl p-6 shadow-lg hover:scale-105 transition"
+              className="bg-slate-950 rounded-xl p-6 shadow-lg hover:scale-105 transition"
             >
-              <h3 className="font-bold text-lg text-black mb-3 text-center">
+              <h3 className="font-bold text-lg text-amber-700 mb-3 text-center">
                 {section.title}
               </h3>
-              <ul className="text-sm text-gray-700 space-y-2">
+              <ul className="text-sm text-amber-600 space-y-2">
                 {section.points.map((p) => (
                   <li key={p}>✔ {p}</li>
                 ))}
@@ -169,9 +169,9 @@ function Header() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.6 }}
-          className="mt-16 bg-white text-gray-800 p-6 rounded-lg text-center text-xl font-extrabold"
+          className="mt-16 bg-slate-950 text-4xl p-6 rounded-lg text-center text-blue-200 font-extrabold"
         >
-          By Ak Sir • 📞 +91-8404827541
+          By Shoaib Lari   •   📞 +91-9838573904
         </motion.div>
       </header>
     </div>
