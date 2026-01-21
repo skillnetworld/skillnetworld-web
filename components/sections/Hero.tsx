@@ -6,6 +6,7 @@ import Button from "../ui/Button";
 import Image from "next/image";
 import { FaStar, FaCheckCircle, FaInfinity, FaChartLine, FaBookOpen } from "react-icons/fa";
 import ConsultationSuccessModal from "../ui/ConsultationSuccessModal";
+import Link from "next/link";
 
 const slides = [
     {
@@ -15,6 +16,8 @@ const slides = [
         description: "Unlock your potential with expert-led courses, real-world projects, and a community that accelerates your growth.",
         cta1: "Explore Courses",
         cta2: "View Roadmap",
+        link1: "/courses",
+        link2: "/contact",
         bgAccent: "bg-red-500/20"
     },
     {
@@ -24,6 +27,8 @@ const slides = [
         description: "Don't just watch tutorials. Build scalable applications, deploy to the cloud, and showcase your work to top recruiters.",
         cta1: "Start Building",
         cta2: "See Projects",
+        link1: "/courses",
+        link2: "/courses",
         bgAccent: "bg-orange-500/20"
     },
     {
@@ -33,6 +38,8 @@ const slides = [
         description: "Get direct feedback, attend live workshops, and network with professionals from Google, Microsoft, and Amazon.",
         cta1: "Find a Mentor",
         cta2: "Meet Instructors",
+        link1: "/contact",
+        link2: "/courses",
         bgAccent: "bg-red-600/20"
     }
 ];
@@ -115,8 +122,12 @@ const Hero = () => {
                                 </p>
 
                                 <div className="flex flex-wrap gap-4 mb-10">
-                                    <Button variant="gradient" size="lg">{slide.cta1}</Button>
-                                    <Button variant="outline" size="lg">{slide.cta2}</Button>
+                                    <Link href={slide.link1}>
+                                        <Button variant="gradient" size="lg">{slide.cta1}</Button>
+                                    </Link>
+                                    <Link href={slide.link2}>
+                                        <Button variant="outline" size="lg">{slide.cta2}</Button>
+                                    </Link>
                                 </div>
                             </motion.div>
                         </AnimatePresence>
