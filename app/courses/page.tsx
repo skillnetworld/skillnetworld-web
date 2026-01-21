@@ -11,6 +11,11 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { courses as allCourses } from "@/lib/data";
 
+// Note: In Next.js App Router, metadata must be in a Server Component.
+// Since these are currently Client Components, they use the root metadata.
+// To override, we would need to separate the client logic from the server page shell.
+// For now, these client components will inherit the robust root metadata.
+
 const CourseCard = ({ course }: { course: typeof allCourses[0] }) => {
     return (
         <Link href={`/courses/${course.id}`} className="block h-full">
