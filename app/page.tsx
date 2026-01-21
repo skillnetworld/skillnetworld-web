@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <CoursesGrid />
       <Testimonials />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </main>
   );

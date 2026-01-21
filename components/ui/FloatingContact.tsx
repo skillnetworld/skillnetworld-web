@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const FloatingContact = () => {
     return (
         <motion.a
-            href="https://wa.me/1234567890" // Replace with actual number
+            href="https://wa.me/+919793336896" // Replace with actual number
             target="_blank"
             rel="noopener noreferrer"
             initial={{ scale: 0, opacity: 0 }}

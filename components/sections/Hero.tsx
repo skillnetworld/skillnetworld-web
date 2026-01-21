@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
 import Image from "next/image";
 import { FaStar, FaCheckCircle, FaInfinity, FaChartLine, FaBookOpen } from "react-icons/fa";
+import ConsultationSuccessModal from "../ui/ConsultationSuccessModal";
 
 const slides = [
     {
@@ -38,6 +39,20 @@ const slides = [
 
 const Hero = () => {
     const [current, setCurrent] = useState(0);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleConsultationSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setIsSubmitting(false);
+        setIsSuccessModalOpen(true);
+        // Reset form would ideally go here or via a ref
+        const form = e.target as HTMLFormElement;
+        form.reset();
+    };
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -201,7 +216,7 @@ const Hero = () => {
                                 <p className="text-slate-500 text-sm">Get a free career roadmap & course details</p>
                             </div>
 
-                            <form className="space-y-4">
+                            <form className="space-y-4" onSubmit={handleConsultationSubmit}>
                                 <div>
                                     <input type="text" placeholder="Your Name" className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-600 focus:outline-none focus:border-red-500 focus:bg-white transition-colors" />
                                 </div>
@@ -221,7 +236,9 @@ const Hero = () => {
                                     <textarea placeholder="Any specific questions?" rows={3} className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-600 focus:outline-none focus:border-red-500 focus:bg-white transition-colors"></textarea>
                                 </div>
 
-                                <Button variant="gradient" className="w-full py-4 text-lg shadow-lg shadow-red-500/25">Get Free Details</Button>
+                                <Button variant="gradient" className="w-full py-4 text-lg shadow-lg shadow-red-500/25" disabled={isSubmitting}>
+                                    {isSubmitting ? "Submitting..." : "Get Free Details"}
+                                </Button>
 
                                 <p className="text-center text-xs text-slate-500 mt-4">
                                     By joining, you agree to our Terms & Privacy Policy.
@@ -232,7 +249,12 @@ const Hero = () => {
 
                 </div>
             </div>
-        </section>
+
+            <ConsultationSuccessModal
+                isOpen={isSuccessModalOpen}
+                onClose={() => setIsSuccessModalOpen(false)}
+            />
+        </section >
     );
 };
 

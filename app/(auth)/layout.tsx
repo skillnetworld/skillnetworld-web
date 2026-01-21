@@ -10,8 +10,8 @@ export default function AuthLayout({
     return (
         <main className="bg-slate-50 min-h-screen">
             <Navbar />
-            <div className="flex items-center justify-center min-h-screen pt-20 pb-10 px-4">
-                <div className="w-full max-w-md">
+            <div className="flex items-center justify-center min-h-screen pt-32 pb-10 px-4 w-full">
+                <div className="w-full flex justify-center">
                     {children}
                 </div>
             </div>
