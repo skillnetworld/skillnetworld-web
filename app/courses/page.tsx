@@ -18,7 +18,7 @@ const CourseCard = ({ course }: { course: typeof allCourses[0] }) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ y: -10 }}
-                className="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 backdrop-blur-sm group h-full"
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md group h-full"
             >
                 <div className="relative h-48 w-full overflow-hidden">
                     <Image
@@ -29,7 +29,7 @@ const CourseCard = ({ course }: { course: typeof allCourses[0] }) => {
                     />
                     <div className="absolute top-4 left-4 flex gap-2">
                         {course.tags.map(tag => (
-                            <span key={tag} className="px-2 py-1 bg-black/60 backdrop-blur-md rounded-md text-xs text-white border border-white/10">
+                            <span key={tag} className="px-2 py-1 bg-white/90 backdrop-blur-md rounded-md text-xs text-slate-900 border border-slate-200 font-medium">
                                 {tag}
                             </span>
                         ))}
@@ -39,8 +39,8 @@ const CourseCard = ({ course }: { course: typeof allCourses[0] }) => {
                 <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                         <div>
-                            <h3 className="text-xl font-bold text-white mb-1 line-clamp-1">{course.title}</h3>
-                            <p className="text-sm text-slate-400 flex items-center gap-1">
+                            <h3 className="text-xl font-bold text-slate-900 mb-1 line-clamp-1">{course.title}</h3>
+                            <p className="text-sm text-slate-600 flex items-center gap-1">
                                 <FaUser size={12} /> {course.instructor}
                             </p>
                         </div>
@@ -49,13 +49,13 @@ const CourseCard = ({ course }: { course: typeof allCourses[0] }) => {
                         </div>
                     </div>
 
-                    <div className="flex items-center justify-between text-sm text-slate-400 mb-6 border-b border-slate-700/50 pb-4">
+                    <div className="flex items-center justify-between text-sm text-slate-500 mb-6 border-b border-slate-100 pb-4">
                         <span className="flex items-center gap-1"><FaClock size={12} /> {course.duration}</span>
                         <span>{course.students} Students</span>
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-white">{course.price}</span>
+                        <span className="text-2xl font-bold text-red-600">{course.price}</span>
                         <Button variant="outline" size="sm">Enroll Now</Button>
                     </div>
                 </div>
@@ -79,12 +79,12 @@ const AllCourses = () => {
     });
 
     return (
-        <main className="bg-slate-950 min-h-screen text-slate-200 selection:bg-blue-500/30">
+        <main className="bg-white min-h-screen text-slate-900 selection:bg-red-500/30">
             <Navbar />
 
             <section className="pt-32 pb-10 px-6 container mx-auto text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Explore All Courses</h1>
-                <p className="text-slate-400 max-w-2xl mx-auto mb-10">
+                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Explore All Courses</h1>
+                <p className="text-slate-600 max-w-2xl mx-auto mb-10">
                     Find the perfect course to upgrade your skills. Filter by category or search for specific topics.
                 </p>
 
@@ -97,7 +97,7 @@ const AllCourses = () => {
                             placeholder="Search courses..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full bg-slate-800 border border-slate-700 rounded-full pl-10 pr-6 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                            className="w-full bg-slate-100 border border-slate-300 rounded-full pl-10 pr-6 py-3 text-slate-900 focus:outline-none focus:border-red-500 transition-colors placeholder:text-slate-500"
                         />
                     </div>
                 </div>
@@ -109,8 +109,8 @@ const AllCourses = () => {
                             key={cat}
                             onClick={() => setSelectedCategory(cat)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat
-                                ? "bg-blue-600 text-white"
-                                : "bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-white"
+                                ? "bg-red-600 text-white shadow-md shadow-red-500/20"
+                                : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
                                 }`}
                         >
                             {cat}
