@@ -1,9 +1,18 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: { unoptimized: true },
-  turbopack: {
-    root: __dirname, // ensures correct root
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+      },
+    ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

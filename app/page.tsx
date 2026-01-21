@@ -1,30 +1,19 @@
-import Image from "next/image";
-import Navbar from "./pages/navbar";
-import Header from "./pages/Home/Header";
-import Course from "./pages/courses/Course";
-import Footer from "./pages/Home/Footer";
-import Practices from "./pages/courses/Practices";
-import HappiestClients from "./pages/courses/HappiestClients";
-import ContactPage from "./pages/Home/Contact";
-
-
-
-
-
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+import Hero from "../components/sections/Hero";
+import CoursesGrid from "../components/sections/CoursesGrid";
+import Testimonials from "../components/sections/Testimonials";
+import Contact from "../components/sections/Contact";
 
 export default function Home() {
   return (
-    <>
+    <main className="bg-white min-h-screen text-slate-900 selection:bg-red-500/30">
       <Navbar />
-      <Header/>
-      <Course/>
-      <Practices/>
-      <HappiestClients/>
-      <ContactPage/>
-       <Footer/>
-       
-  
-      
-    </>
+      <Hero />
+      <CoursesGrid />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </main>
   );
 }

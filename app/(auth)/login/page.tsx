@@ -1,0 +1,86 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Button from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+
+const Login = () => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-slate-900/80 p-8 rounded-2xl border border-slate-800 backdrop-blur-md shadow-2xl"
+        >
+            <div className="text-center mb-8">
+                <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+                <p className="text-slate-400">Sign in to continue your learning journey</p>
+            </div>
+
+            <form className="space-y-6">
+                <div>
+                    <label className="block text-slate-300 text-sm font-medium mb-2" htmlFor="email">
+                        Email Address
+                    </label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    />
+                </div>
+                <div>
+                    <label className="block text-slate-300 text-sm font-medium mb-2" htmlFor="password">
+                        Password
+                    </label>
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="••••••••"
+                        className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    />
+                </div>
+
+                <div className="flex items-center justify-between text-sm">
+                    <label className="flex items-center text-slate-400 hover:text-white cursor-pointer">
+                        <input type="checkbox" className="mr-2 rounded bg-slate-800 border-slate-700 text-blue-500 focus:ring-0" />
+                        Remember me
+                    </label>
+                    <Link href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+                        Forgot Password?
+                    </Link>
+                </div>
+
+                <Button variant="gradient" className="w-full" size="lg">Sign In</Button>
+            </form>
+
+            <div className="mt-8 mb-6 relative">
+                <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-slate-800"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-slate-900 text-slate-500">Or continue with</span>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+                <button className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white py-2.5 rounded-lg border border-slate-700 transition-colors">
+                    <FaGoogle /> Google
+                </button>
+                <button className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white py-2.5 rounded-lg border border-slate-700 transition-colors">
+                    <FaGithub /> GitHub
+                </button>
+            </div>
+
+            <div className="mt-8 text-center text-sm text-slate-400">
+                Don't have an account?{" "}
+                <Link href="/signup" className="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+                    Sign up
+                </Link>
+            </div>
+        </motion.div>
+    );
+};
+
+export default Login;
