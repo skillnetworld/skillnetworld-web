@@ -121,7 +121,7 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, coursePr
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
-                                        placeholder="+91 98765 43210"
+                                        placeholder="+91 97933 36896"
                                     />
                                 </div>
 

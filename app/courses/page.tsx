@@ -73,7 +73,7 @@ const AllCourses = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
 
-    const categories = ["All", "AI", "Development", "Data", "Security", "Marketing", "Cloud", "Mobile", "DevOps", "Blockchain", "Certification", "Diploma", "Degree"];
+    const categories = ["All", "AI", "Marketing", "Certification", "Diploma", "Finance", "Teaching", "Art", "Yoga", "Degree"];
 
     const filteredCourses = allCourses.filter(course => {
         const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

@@ -7,39 +7,40 @@ import Image from "next/image";
 import { FaStar, FaCheckCircle, FaInfinity, FaChartLine, FaBookOpen } from "react-icons/fa";
 import ConsultationSuccessModal from "../ui/ConsultationSuccessModal";
 import Link from "next/link";
+import { courses } from "@/lib/data";
 
 const slides = [
     {
         id: 1,
-        badge: "The Future of Learning is Here",
-        title: <>Master the Skills of <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">Tomorrow, Today.</span></>,
-        description: "Unlock your potential with expert-led courses, real-world projects, and a community that accelerates your growth.",
+        badge: "Build Your Career",
+        title: <>Bridge the Gap Between <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600">Ambition & Achievement.</span></>,
+        description: "Empowering learners with industry-ready Digital Marketing, AI courses, and diploma programs designed for the future.",
         cta1: "Explore Courses",
-        cta2: "View Roadmap",
+        cta2: "Free Consultation",
         link1: "/courses",
         link2: "/contact",
         bgAccent: "bg-red-500/20"
     },
     {
         id: 2,
-        badge: "Project-Based Learning",
-        title: <>Build Real-World <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">Portfolios that Hire.</span></>,
-        description: "Don't just watch tutorials. Build scalable applications, deploy to the cloud, and showcase your work to top recruiters.",
-        cta1: "Start Building",
-        cta2: "See Projects",
-        link1: "/courses",
+        badge: "Industry-Ready Skillset",
+        title: <>Where Skills Meet <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500">Success & Innovation.</span></>,
+        description: "Transform your curious mind into a confident professional with expert mentors and a future-focused curriculum.",
+        cta1: "Join Now",
+        cta2: "Success Stories",
+        link1: "/contact",
         link2: "/courses",
         bgAccent: "bg-orange-500/20"
     },
     {
         id: 3,
-        badge: "Expert Mentorship",
-        title: <>Learn from Industry <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">Veterans & Leaders.</span></>,
-        description: "Get direct feedback, attend live workshops, and network with professionals from Google, Microsoft, and Amazon.",
-        cta1: "Find a Mentor",
-        cta2: "Meet Instructors",
+        badge: "Your Trusted Guide",
+        title: <>Get Personalized <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-pink-600">Counseling & Guidance.</span></>,
+        description: "Expert advice on UGC, DEC, and AICTE approved university courses to help you choose the right academic path.",
+        cta1: "Get Advice",
+        cta2: "Meet Counselors",
         link1: "/contact",
-        link2: "/courses",
+        link2: "/about",
         bgAccent: "bg-red-600/20"
     }
 ];
@@ -238,9 +239,9 @@ const Hero = () => {
                                 <div>
                                     <select className="w-full bg-white/50 border border-slate-200 rounded-xl px-4 py-3 text-slate-600 focus:outline-none focus:border-red-500 focus:bg-white transition-colors">
                                         <option>Select Interested Course</option>
-                                        <option>AI & Machine Learning</option>
-                                        <option>Web Development</option>
-                                        <option>Digital Marketing</option>
+                                        {courses.map(course => (
+                                            <option key={course.id} value={course.title}>{course.title}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div>

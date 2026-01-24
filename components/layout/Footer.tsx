@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaRocket, FaTwitter, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaInstagram, FaRocket } from "react-icons/fa";
 import Button from "../ui/Button";
 
 const Footer = () => {
@@ -21,8 +21,12 @@ const Footer = () => {
                             Empowering the next generation of learners with cutting-edge skills and a community of experts.
                         </p>
                         <div className="flex space-x-4">
-                            {[FaTwitter, FaLinkedin, FaGithub, FaInstagram].map((Icon, idx) => (
-                                <a key={idx} href="#" className="text-slate-400 hover:text-red-500 transition-colors">
+                            {[
+                                { Icon: FaFacebook, href: "https://www.facebook.com/share/1CRURqqqZ6/?mibextid=wwXIfr" },
+                                { Icon: FaInstagram, href: "https://www.instagram.com/skillnetworld?igsh=c3d4b3JmYWk2aGZo&utm_source=qr" },
+                                { Icon: FaLinkedin, href: "https://www.linkedin.com/in/skillnetworld-firoj-khan-6371a23a5/" }
+                            ].map(({ Icon, href }, idx) => (
+                                <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-red-500 transition-colors">
                                     <Icon size={20} />
                                 </a>
                             ))}

@@ -4,10 +4,11 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ConsultationSuccessModal from "@/components/ui/ConsultationSuccessModal";
+import { courses } from "@/lib/data";
 
 export default function ContactPage() {
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -68,8 +69,8 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Our Location</h3>
                                         <p className="text-slate-600">
-                                            123 Tech Park, Sector 62,<br />
-                                            Noida, Uttar Pradesh, India - 201301
+                                            House no. 20, shyam nagar, khurram nagar,<br />
+                                            near by Dr joshi clinic, Lucknow, Uttar Pradesh - 226022
                                         </p>
                                     </div>
                                 </div>
@@ -80,7 +81,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Email Us</h3>
-                                        <p className="text-slate-600">hello@skillnetworld.com</p>
+                                        <p className="text-slate-600">skillnetworld@gmail.com</p>
                                         <p className="text-slate-600">support@skillnetworld.com</p>
                                     </div>
                                 </div>
@@ -91,8 +92,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Call Us</h3>
-                                        <p className="text-slate-600">+91 98765 43210</p>
-                                        <p className="text-slate-600">+91 11 2345 6789</p>
+                                        <p className="text-slate-600">+91 97933 36896</p>
+                                        <p className="text-slate-600">+91 78040 24162</p>
                                     </div>
                                 </div>
                             </div>
@@ -108,14 +109,15 @@ export default function ContactPage() {
                             <h3 className="text-xl font-bold mb-4 text-slate-900">Follow Us</h3>
                             <div className="flex gap-4">
                                 {[
-                                    { icon: <FaTwitter size={20} />, href: "#" },
-                                    { icon: <FaLinkedin size={20} />, href: "#" },
-                                    { icon: <FaInstagram size={20} />, href: "#" },
-                                    { icon: <FaGithub size={20} />, href: "#" }
+                                    { icon: <FaFacebook size={20} />, href: "https://www.facebook.com/share/1CRURqqqZ6/?mibextid=wwXIfr" },
+                                    { icon: <FaInstagram size={20} />, href: "https://www.instagram.com/skillnetworld?igsh=c3d4b3JmYWk2aGZo&utm_source=qr" },
+                                    { icon: <FaLinkedin size={20} />, href: "https://www.linkedin.com/in/skillnetworld-firoj-khan-6371a23a5/" }
                                 ].map((social, idx) => (
                                     <a
                                         key={idx}
                                         href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-600 border border-slate-200 hover:text-red-600 hover:border-red-600 transition-all shadow-sm"
                                     >
                                         {social.icon}
@@ -161,12 +163,12 @@ export default function ContactPage() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">Interested Course</label>
                                 <select className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-slate-900">
-                                    <option>General Inquiry</option>
-                                    <option>Course Support</option>
-                                    <option>Partnership</option>
-                                    <option>Other</option>
+                                    <option>General Inquiry / Other</option>
+                                    {courses.map(course => (
+                                        <option key={course.id} value={course.title}>{course.title}</option>
+                                    ))}
                                 </select>
                             </div>
                             <div>
