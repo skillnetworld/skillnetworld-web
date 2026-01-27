@@ -283,6 +283,68 @@ export const courses = [
             "UGC/AICTE Approved University Selection"
         ]
     },
+    {
+        id: "14",
+        title: "EV Tech (Electric Vehicle Technology)",
+        instructor: "EV Certified Engineer",
+        rating: 4.8,
+        students: "500+",
+        duration: "6 Months",
+        price: "₹35,000",
+        image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=800",
+        tags: ["EV", "Engineering", "Technology"],
+        category: "Technology",
+        description: "A future-ready course covering Electric Vehicle mechanics, battery technology, charging infrastructure, and maintenance.",
+        curriculum: [
+            "Introduction to Electric Vehicles (EVs)",
+            "Battery Technology & Management Systems",
+            "EV Motors and Controllers",
+            "Charging Infrastructure & Safety",
+            "Maintenance & Diagnostics of EVs",
+            "Hands-on EV Lab Sessions"
+        ]
+    },
+    {
+        id: "15",
+        title: "Makeup Artist",
+        instructor: "Professional Celebrity Makeup Artist",
+        rating: 4.9,
+        students: "800+",
+        duration: "3 Months",
+        price: "₹15,000",
+        image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=800",
+        tags: ["Beauty", "Makeup", "Art"],
+        category: "Vocational",
+        description: "Master the art of professional makeup. Learn bridal, party, and editorial makeup techniques from industry experts.",
+        curriculum: [
+            "Skin Prep & Color Theory",
+            "Bridal & Party Makeup Techniques",
+            "Editorial & Fashion Makeup",
+            "Hairstyling Basics",
+            "Client Consultation & Service",
+            "Building a Portfolio"
+        ]
+    },
+    {
+        id: "16",
+        title: "'O' Level (NIELIT)",
+        instructor: "NIELIT Certified Faculty",
+        rating: 4.7,
+        students: "5k+",
+        duration: "1 Year",
+        price: "₹18,000",
+        image: "https://images.unsplash.com/photo-1581092921461-eab62e97a783?auto=format&fit=crop&q=80&w=800",
+        tags: ["Government", "IT", "Certification"],
+        category: "Certification",
+        description: "A foundation course in Information Technology suitable for government jobs. Equivalent to a Diploma in CS/IT.",
+        curriculum: [
+            "IT Tools and Network Basics",
+            "Web Designing & Publishing",
+            "Programming and Problem Solving through Python",
+            "Internet of Things (IoT) and its Applications",
+            "Practical Project Work"
+        ]
+    },
 ];
 
 export const getCourseById = (id: string) => {

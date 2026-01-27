@@ -7,13 +7,47 @@ import { motion } from "framer-motion";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import ConsultationSuccessModal from "@/components/ui/ConsultationSuccessModal";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+    const router = useRouter();
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsModalOpen(true);
+        setError('');
+
+        try {
+            const response = await fetch('http://localhost:5001/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('token', data.token);
+                // Check role and redirect
+                if (data.user && data.user.role === 'admin') {
+                    router.push('/admin');
+                } else {
+                    router.push('/');
+                }
+            } else {
+                setError(data.msg || "Login failed");
+            }
+        } catch (err) {
+            console.error(err);
+            setError("Server error");
+        }
     };
     return (
         <motion.div
@@ -40,6 +74,7 @@ const Login = () => {
                 <div className="text-center lg:text-left mb-8">
                     <h1 className="text-3xl font-bold text-slate-900 mb-2">Sign In</h1>
                     <p className="text-slate-600">Enter your details to access your account</p>
+                    {error && <p className="text-red-500 mt-2 text-sm">{error}</p>}
                 </div>
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
@@ -50,6 +85,8 @@ const Login = () => {
                         <input
                             id="email"
                             type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@example.com"
                             className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />
@@ -61,6 +98,8 @@ const Login = () => {
                         <input
                             id="password"
                             type="password"
+                            value={formData.password}
+                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             placeholder="••••••••"
                             className="w-full bg-slate-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />

@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ConsultationSuccessModal from "@/components/ui/ConsultationSuccessModal";
@@ -17,12 +17,42 @@ export default function ContactPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSuccessModalOpen(true);
         const form = e.target as HTMLFormElement;
-        form.reset();
+
+        // Extract values from form elements
+        const firstName = (form.elements[0] as HTMLInputElement).value;
+        const lastName = (form.elements[1] as HTMLInputElement).value;
+        const email = (form.elements[2] as HTMLInputElement).value;
+        const courseInterest = (form.elements[3] as HTMLSelectElement).value;
+        const message = (form.elements[4] as HTMLTextAreaElement).value;
+
+        try {
+            const response = await fetch('http://localhost:5001/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    courseInterest,
+                    message
+                }),
+            });
+
+            if (response.ok) {
+                setIsSuccessModalOpen(true);
+                form.reset();
+            } else {
+                alert("Failed to send message. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+            alert("Error sending message. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -69,8 +99,8 @@ export default function ContactPage() {
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Our Location</h3>
                                         <p className="text-slate-600">
-                                            House no. 20, shyam nagar, khurram nagar,<br />
-                                            near by Dr joshi clinic, Lucknow, Uttar Pradesh - 226022
+                                            House no. 20, Shyam Nagar, Khurram Nagar,<br />
+                                            near by Dr. Joshi Clinic, Lucknow, Uttar Pradesh - 226022
                                         </p>
                                     </div>
                                 </div>
@@ -88,7 +118,7 @@ export default function ContactPage() {
 
                                 <div className="flex items-start gap-4">
                                     <div className="bg-red-50 p-3 rounded-full text-red-600 mt-1">
-                                        <FaPhone size={20} />
+                                        <FaPhoneAlt size={20} />
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-slate-900 mb-1">Call Us</h3>

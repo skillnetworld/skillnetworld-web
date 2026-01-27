@@ -53,13 +53,42 @@ const Hero = () => {
     const handleConsultationSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSuccessModalOpen(true);
-        // Reset form would ideally go here or via a ref
         const form = e.target as HTMLFormElement;
-        form.reset();
+
+        // Extract values
+        const name = (form.elements[0] as HTMLInputElement).value;
+        const phone = (form.elements[1] as HTMLInputElement).value;
+        const email = (form.elements[2] as HTMLInputElement).value;
+        const courseInterest = (form.elements[3] as HTMLSelectElement).value;
+        const message = (form.elements[4] as HTMLTextAreaElement).value;
+
+        try {
+            const response = await fetch('http://localhost:5001/api/consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    email,
+                    courseInterest,
+                    message
+                }),
+            });
+
+            if (response.ok) {
+                setIsSuccessModalOpen(true);
+                form.reset();
+            } else {
+                alert("Submission failed. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error submitting consultation:", error);
+            alert("Error submitting consultation. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     useEffect(() => {

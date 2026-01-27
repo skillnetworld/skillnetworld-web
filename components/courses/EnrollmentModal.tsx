@@ -25,18 +25,39 @@ export default function EnrollmentModal({ isOpen, onClose, courseTitle, coursePr
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            const response = await fetch('http://localhost:5001/api/enroll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    courseTitle,
+                    coursePrice
+                }),
+            });
 
-        setIsSubmitting(false);
-        setIsSuccess(true);
-
-        // Reset after showing success
-        setTimeout(() => {
-            setIsSuccess(false);
-            setFormData({ name: "", email: "", phone: "" });
-            onClose();
-        }, 2000);
+            if (response.ok) {
+                setIsSuccess(true);
+                // Reset after showing success
+                setTimeout(() => {
+                    setIsSuccess(false);
+                    setFormData({ name: "", email: "", phone: "" });
+                    onClose();
+                }, 2000);
+            } else {
+                console.error("Enrollment failed");
+                alert("Enrollment failed. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error submitting enrollment:", error);
+            alert("Error submitting enrollment. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (!isOpen) return null;

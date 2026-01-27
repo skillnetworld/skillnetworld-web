@@ -9,11 +9,51 @@ import Image from "next/image";
 import ConsultationSuccessModal from "@/components/ui/ConsultationSuccessModal";
 
 const Signup = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsModalOpen(true);
+        setError('');
+
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:5001/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    password: formData.password
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Save token to localStorage
+                localStorage.setItem('token', data.token);
+                setIsModalOpen(true); // Show success/under dev modal for now
+                // Alternatively redirect: router.push('/dashboard');
+            } else {
+                setError(data.msg || "Registration failed");
+            }
+        } catch (err) {
+            console.error(err);
+            setError("Server error. Please try again.");
+        }
     };
     return (
         <motion.div
@@ -40,6 +80,7 @@ const Signup = () => {
                 <div className="text-center lg:text-left mb-8">
                     <h1 className="text-3xl font-bold text-slate-900 mb-2">Create Account</h1>
                     <p className="text-slate-600">Sign up to get started with SkillNetWorld</p>
+                    {error && <p className="text-red-500 mt-2 text-sm">{error}</p>}
                 </div>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
@@ -50,6 +91,8 @@ const Signup = () => {
                         <input
                             id="name"
                             type="text"
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="John Doe"
                             className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />
@@ -61,6 +104,8 @@ const Signup = () => {
                         <input
                             id="email"
                             type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@example.com"
                             className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />
@@ -72,6 +117,8 @@ const Signup = () => {
                         <input
                             id="password"
                             type="password"
+                            value={formData.password}
+                            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             placeholder="Create a password"
                             className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />
@@ -83,6 +130,8 @@ const Signup = () => {
                         <input
                             id="confirm-password"
                             type="password"
+                            value={formData.confirmPassword}
+                            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                             placeholder="Confirm password"
                             className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors placeholder:text-slate-400"
                         />
